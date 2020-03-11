@@ -1,0 +1,13 @@
+.container  {
+  margin-top: 5%;
+}
+button {
+  margin: 5px;
+}
+
+#editUser {
+  float: right;
+}
+#removeUser {
+  float: right;
+}
