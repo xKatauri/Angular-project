@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from './user.model';
-import {v4 as uuidv4} from 'uuid';
+import { User } from './user.model';
 import { UserService } from './user.service';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -9,15 +10,23 @@ import { UserService } from './user.service';
   providers: [UserService]
 })
 export class UsersListComponent implements OnInit {
-users: User[];
+  users: User[];
+  private subscription: Subscription;
 
-userAdditing() {
-
-}
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.users = this.userService.getUsers();
+    this.subscription = this.userService.usersChanged
+      .subscribe(
+        (users: User[]) => {
+          this.users = users;
+        }
+      )
+  }
+
+  onEditUser(index: number) {
+    this.userService.startedEditing.next(index);
   }
 
 }

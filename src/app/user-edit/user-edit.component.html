@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Пользователи</h3>
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Имя" name="name" ngModel required>
+        </div>
+        <button class="btn btn-success" type="submit"
+          [disabled]="!f.valid">{{editMode ? 'Сохранить редактирование' : 'Добавить пользователя'}}
+        </button>
+        <button class="btn btn-primary" type="button" (click)="onClear()">Очистить</button>
+        <button class="btn btn-default" (click)="onDelete()" *ngIf="editMode">
+          <span class="glyphicon glyphicon-remove" saria-hidden="true" title="Удалить"></span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

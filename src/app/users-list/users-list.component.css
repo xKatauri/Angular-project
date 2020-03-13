@@ -1,6 +1,3 @@
-.container  {
-  margin-top: 5%;
-}
 button {
   margin: 5px;
 }
@@ -8,6 +5,6 @@ button {
 #editUser {
   float: right;
 }
-#removeUser {
+.btn-default {
   float: right;
 }
